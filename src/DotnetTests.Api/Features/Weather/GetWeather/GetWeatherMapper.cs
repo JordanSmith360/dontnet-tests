@@ -1,4 +1,5 @@
-﻿using DotnetTests.Database.Models;
+﻿using DotnetTests.Api.Features.Weather.GetWeather;
+using DotnetTests.Database.Models;
 
 namespace dotnet_tests.Features.Weather.GetWeather;
 

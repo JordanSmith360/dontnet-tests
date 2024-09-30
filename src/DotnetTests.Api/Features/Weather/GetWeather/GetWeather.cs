@@ -1,4 +1,5 @@
-﻿using dotnet_tests.Features.Weather.GetWeather;
+﻿using dotnet_tests.Features.Weather;
+using dotnet_tests.Features.Weather.GetWeather;
 using Microsoft.EntityFrameworkCore;
 
 namespace DotnetTests.Api.Features.Weather.GetWeather;
@@ -14,8 +15,9 @@ public class GetWeather : EndpointWithoutRequest<List<GetWeatherResponse>, GetWe
 
     public override void Configure()
     {
-        Get("/weather");
+        Get("");
         AllowAnonymous();
+        Group<WeatherApiGroup>();
     }
 
     public override async Task HandleAsync(CancellationToken ct)
@@ -32,4 +34,9 @@ public class GetWeather : EndpointWithoutRequest<List<GetWeatherResponse>, GetWe
 
         await SendAsync(weatherResponse, cancellation: ct);
     }
+}
+
+public record GetWeatherResponse(DateTime Date, double TemperatureC, string Summary)
+{
+    public double TemperatureF => 32 + (double)(TemperatureC / 0.5556);
 }
