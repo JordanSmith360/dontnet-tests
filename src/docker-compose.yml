@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  dotnet-tests-api:
+    image: ${DOCKER_REGISTRY-}dotnettestsapi
+    build:
+      context: .
+      dockerfile: dotnet-tests/Dockerfile
+    ports: 
+      - 5000:80
+      - 5001:443
+
+  mssql:
+    container_name: sql-server
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: always
+    environment:
+        ACCEPT_EULA: "Y"
+        SA_PASSWORD: "P@SSW0RD"
+    ports:
+        - 1433:1433
+    volumes:
+        - my-volume:/var/opt/mssql
+
+volumes:
+  my-volume:
