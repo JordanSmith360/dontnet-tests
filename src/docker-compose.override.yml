@@ -5,6 +5,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
+      - SQL_CONFIG__SERVER=mssql
+      - SQL_CONFIG__DATABASENAME=TestDatabase
+      - SQL_CONFIG__USER=sa
+      - SQL_CONFIG__PASSWORD=P@SSW0RD
     ports:
       - "80"
       - "443"
