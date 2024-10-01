@@ -9,6 +9,7 @@ public class GetWeatherMapper : ResponseMapper<GetWeatherResponse, WeatherEntry>
     {
         return new GetWeatherResponse(weatherEntry.Date,
             (double)weatherEntry.TemperatureCelsius,
-            weatherEntry.Summary);
+            weatherEntry.Summary,
+            weatherEntry.Id);
     }
 }
