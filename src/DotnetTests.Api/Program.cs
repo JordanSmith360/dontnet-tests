@@ -4,6 +4,18 @@ using FastEndpoints.Swagger;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 
 builder.Host.UseSerilog((ctx, lc) => 
     lc.WriteTo.Console()
@@ -16,6 +28,7 @@ builder.Services.AddFastEndpoints()
 var app = builder.Build();
 
 app.UseHttpsRedirection();
+app.UseCors(MyAllowSpecificOrigins);
 app.UseFastEndpoints()
     .UseSwaggerGen()
     .UseDefaultExceptionHandler();
