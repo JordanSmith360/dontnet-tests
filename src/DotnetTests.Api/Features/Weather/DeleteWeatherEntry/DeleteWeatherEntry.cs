@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DotnetTests.Api.Features.Weather.DeleteWeatherEntry;
 
-public class DeleteWeatherEntry(MyDbContext context) : Endpoint<DeleteWeatherEntryRequest, Results<NotFound, Ok>>
+public class DeleteWeatherEntry(MyDbContext context) 
+    : Endpoint<DeleteWeatherEntryRequest, Results<NotFound, Ok>>
 {
     public override void Configure()
     {

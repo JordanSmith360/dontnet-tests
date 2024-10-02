@@ -1,6 +1,6 @@
 ﻿namespace DotnetTests.Database.Models;
 
-public class WeatherEntry
+public class WeatherEntry : BaseEntity
 {
     public int Id { get; set; }
     public DateTime Date { get; set; }
