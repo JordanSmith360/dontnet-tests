@@ -21,8 +21,7 @@ public class GetWeatherById(MyDbContext context)
     public override async Task<Results<Ok<GetWeatherResponse>, NotFound>> ExecuteAsync(GetWeatherByIdRequest req, CancellationToken ct)
     {
         var weatherResponse = await context.WeatherEntries
-            //.UseSpecification(new GetWeatherItemsByIdSpecification(req.Id))
-            .Where(x => x.Id == req.Id)
+            .UseSpecification(new GetWeatherItemsByIdSpecification(req.Id))
             .Select(x => Map.FromEntity(x))
             .FirstOrDefaultAsync(ct);
 

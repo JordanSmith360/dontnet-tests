@@ -17,7 +17,7 @@ public static class SpecificationEvaulator
 
         if (specification.Criteria is not null)
         {
-            queryable.Where(specification.Criteria);
+            queryable = queryable.Where(specification.Criteria);
         }
 
         queryable = specification.Includes
@@ -31,7 +31,7 @@ public static class SpecificationEvaulator
         if (specification.PageNumber is not null 
             && specification.PageSize is not null)
         {
-            queryable.Skip(((int)specification.PageNumber - 1) * (int)specification.PageSize)
+            queryable = queryable.Skip(((int)specification.PageNumber - 1) * (int)specification.PageSize)
                 .Take((int)specification.PageSize);
         }
 
