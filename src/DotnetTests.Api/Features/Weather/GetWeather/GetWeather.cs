@@ -9,7 +9,8 @@ namespace DotnetTests.Api.Features.Weather.GetWeather;
 
 public class GetWeather(MyDbContext context) 
     : EndpointWithoutRequest<Results<Ok<List<GetWeatherResponse>>, NotFound>, GetWeatherMapper>
-{    public override void Configure()
+{    
+    public override void Configure()
     {
         Get("");
         AllowAnonymous();
@@ -19,7 +20,7 @@ public class GetWeather(MyDbContext context)
     public override async Task<Results<Ok<List<GetWeatherResponse>>, NotFound>> ExecuteAsync(CancellationToken ct)
     {
         var weatherResponse = await context.WeatherEntries
-            .UseSpecification(new GetAllWeatherItemsSpecification(1, 2))
+            .UseSpecification(new GetAllWeatherItemsSpecification())
             .Select(x => Map.FromEntity(x))
             .ToListAsync(ct);
 
