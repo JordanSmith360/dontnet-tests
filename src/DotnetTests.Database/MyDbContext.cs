@@ -8,6 +8,7 @@ public class MyDbContext : DbContext
 {
     public DbSet<Todo> Todos { get; set; }
     public DbSet<WeatherEntry> WeatherEntries { get; set; }
+    public DbSet<User> Users { get; set; }
 
     public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
     {
