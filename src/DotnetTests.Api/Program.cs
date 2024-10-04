@@ -2,6 +2,7 @@ global using DotnetTests.Database;
 global using FastEndpoints;
 using FastEndpoints.Swagger;
 using Serilog;
+using DotnetTests.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -22,6 +23,7 @@ builder.Host.UseSerilog((ctx, lc) =>
 );
 
 builder.Services.AddSqlContext();
+builder.Services.AddUserService();
 builder.Services.AddFastEndpoints()
     .SwaggerDocument();
 

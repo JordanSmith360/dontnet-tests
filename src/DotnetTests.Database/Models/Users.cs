@@ -1,3 +1,4 @@
+using DotnetTests.Domain.Models;
 namespace DotnetTests.Database.Models;
 
 public class Users : BaseEntity

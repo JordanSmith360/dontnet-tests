@@ -1,4 +1,6 @@
-﻿using DotnetTests.Database.Internal;
+﻿using DotnetTests.Application.Contracts;
+using DotnetTests.Database.Internal;
+using DotnetTests.Database.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -16,7 +18,9 @@ public static class ServiceCollectionExtensions
         {
             var sqlConfig = sp.GetRequiredService<IOptions<SqlConfig>>();
             opt.UseSqlServer(BuildConnectionString(sqlConfig.Value), cfg => cfg.EnableRetryOnFailure());
-        });            
+        });
+
+        serviceCollection.AddScoped<IUserRepository, UserRepository>();
 
         return serviceCollection;
     }

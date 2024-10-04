@@ -1,4 +1,5 @@
 ﻿using DotnetTests.Database.Models;
+using DotnetTests.Domain.Models;
 using System.Linq.Expressions;
 
 namespace DotnetTests.Database.Specification;

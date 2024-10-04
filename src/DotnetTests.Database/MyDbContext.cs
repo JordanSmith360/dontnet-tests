@@ -1,4 +1,5 @@
 ﻿using DotnetTests.Database.Models;
+using DotnetTests.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 

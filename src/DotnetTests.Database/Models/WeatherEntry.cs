@@ -1,4 +1,5 @@
-﻿namespace DotnetTests.Database.Models;
+﻿using DotnetTests.Domain.Models;
+namespace DotnetTests.Database.Models;
 
 public class WeatherEntry : BaseEntity
 {

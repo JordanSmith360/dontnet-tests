@@ -1,6 +1,7 @@
 using DotnetTests.Database.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
+using DotnetTests.Domain.Models;
 using System.Linq;
 
 namespace DotnetTests.Api.Features.Users;
